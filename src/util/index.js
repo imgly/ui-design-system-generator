@@ -1,5 +1,5 @@
 import { makeSymbol } from 'react-sketchapp'
-import { ACTIVE_THEME, THEME_NAME } from '../theme/app/ids'
+import { ACTIVE_THEME, THEME_NAME } from '../theme/ids'
 
 /**
  * Generate a Symbol and add it to the Symbols page.

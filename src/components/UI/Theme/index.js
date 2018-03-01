@@ -1,28 +1,33 @@
 // Modules
 import React from 'react'
 import styled from 'styled-components/primitives'
-import { Artboard, makeSymbol, Text, View } from 'react-sketchapp'
+import { Artboard, View} from 'react-sketchapp'
 
 // Theme
 import appTheme from '../../../theme/app'
 import uiTheme from '../../../theme/ui'
 
+import { _color as uiColor } from '../../../theme/ui/color'
+import { _color as appColor } from '../../../theme/app/color'
+
 // Components
 import Color from '../../Color'
 // import Typography from '../../Typography'
 
-const Wrapper = styled.View`
-  background-color: ${props =>  props.color};
-  padding-bottom: 120px;
-`
+const WrapperStyles = (backgroundColor) => {
+    return {
+        backgroundColor,
+        paddingBottom: 120
+    }
+}
 
 // Render
 const UITheme = ({ themeID = 'light', index }) => {
     return (
         <Artboard name={themeID} style={{position:'absolute', x: 0, marginLeft: `${index * 1200}px`}}>
-            <Wrapper color={uiTheme.color[themeID].background[1]}>
-                <Color colorGroups={appTheme.color[themeID]} themeID={themeID}/>
-            </Wrapper>
+            <View style={WrapperStyles(uiColor.background.standard[themeID])}>
+                <Color colors={appColor} themeID={themeID}/>
+            </View>
         </Artboard>
     )
 }

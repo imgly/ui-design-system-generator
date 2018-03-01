@@ -56,7 +56,7 @@ const dark = {
     // These colors are used throughout the UI for backgrounds
     background: {
         separator: chroma(UI_BASE_DARK).darken(1).hex(),
-        textInput: chroma(UI_BASE_DARK).darken(0.4).hex(),
+        textInput: chroma(UI_BASE_DARK).brighten(0.5).hex(),
 
         /* Slider */
         sliderKnob: chroma(UI_BASE_DARK).brighten(4.5).hex(),

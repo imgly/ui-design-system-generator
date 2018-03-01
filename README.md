@@ -19,8 +19,3 @@ Run with live reloading in Sketch
 ```
 npm run render
 ```
-
-## The idea behind the example
-
-`styled-components` allows you to write actual CSS code to style your components. It also removes the mapping between components and styles
-# design-system-generator

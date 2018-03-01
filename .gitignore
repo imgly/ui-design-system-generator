@@ -1,0 +1,8 @@
+# IntelliJ project files
+.idea
+gen
+
+styled-components.sketchplugin/
+
+# Dependency directories
+node_modules/

@@ -33,6 +33,24 @@ const Swatch = styled.View`
   background-color: ${props => props.color};
 `
 
+const SwatchOutline = styled.View`
+  height: 40px;
+  width: 40px;
+  border: 1px solid ${props => props.color};
+  border-radius: ${props => props.borderRadius};
+`
+const SwatchOutlineStyle = (borderColor, borderRadius) => {
+    return {
+        width: 40,
+        height: 40,
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: borderColor,
+        borderRadius: borderRadius
+    }
+}
+
+
 const SwatchSymbolMask = styled.View`
   width: 100%;
   border-radius: 4px;
@@ -60,8 +78,17 @@ const DescriptionItem = ({ label, value, themeID }) => (
 // Render
 const ColorSwatch = ({ color, name, width, groupName, index, themeID }) => {
     const _labels = labels(color, name, groupName)
+    const borderRadii = ['0px', '4px', '8px', '100%']
 
     const SwatchSymbol = generateSymbol(() => <Swatch color={color}/>, ['color', groupName, name], themeID)
+
+    borderRadii.map(borderRadius => {
+        generateSymbol(() => <View
+            style={SwatchOutlineStyle(color, borderRadius)}
+            resizingConstraint={{ top: true, right: true, bottom: true, left: true, fixedHeight: false, fixedWidth: false }}
+            borderColor={color}
+            borderRadius={borderRadius}/>, ['color', groupName, name, 'outline', `border ${parseInt(borderRadius)}`], themeID)
+    })
 
     return (
         <Wrapper name={ 'Color ' + name } width={width} index={index}>

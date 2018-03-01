@@ -1,11 +1,7 @@
 # Design-System-Generator
 
 ## How to use
-Download the example or [clone the repo](http://github.com/airbnb/react-sketchapp):
-```
-curl https://codeload.github.com/airbnb/react-sketchapp/tar.gz/master | tar -xz --strip=2 react-sketchapp-master/examples/styled-components
-cd styled-components
-```
+Download the example or [clone the repo](https://github.com/LFra/design-system-generator.git):
 
 Install the dependencies
 ```

@@ -5,10 +5,13 @@ import chroma from 'chroma-js'
 import { View } from 'react-sketchapp'
 import { generateSymbol } from '../../util/index'
 
+// Constants
+import { BORDER_RADII, BORDER_WIDTH } from '../../theme/ids'
+
 // Imports
 import UITypo from '../UI/Typo'
 
-const labels = ( color, name, groupName) => {
+const getLabels = ( color, name) => {
     return {
         name: `${name}`,
         rgba: `${chroma(color).rgba()}`,
@@ -17,6 +20,7 @@ const labels = ( color, name, groupName) => {
 }
 
 // Components
+// TODO: replace with inline styles
 const Wrapper = styled.View`
   display: flex;
   flex-wrap: wrap;
@@ -27,30 +31,39 @@ const Wrapper = styled.View`
   margin-left: ${props => props.index % 4 === 0 || props.index === 0 ? '0px' : '4%'};
 `
 
+// TODO: replace with inline styles
 const Swatch = styled.View`
   height: 40px;
   width: 40px;
   background-color: ${props => props.color};
 `
 
-const SwatchOutline = styled.View`
-  height: 40px;
-  width: 40px;
-  border: 1px solid ${props => props.color};
-  border-radius: ${props => props.borderRadius};
-`
 const SwatchOutlineStyle = (borderColor, borderRadius) => {
     return {
         width: 40,
         height: 40,
-        borderWidth: 1,
+        borderWidth: BORDER_WIDTH,
         borderStyle: 'solid',
         borderColor: borderColor,
         borderRadius: borderRadius
     }
 }
 
+// TODO: find out why boxShadow is not working
+const SwatchSymbolMaskStyle = (color) => {
+    return {
+        width: '100%',
+        height: 24,
+        position: 'relative',
+        overflow: 'hidden',
+        borderRadius: 4,
+        backgroundColor: color,
+        boxSizing: 'border-box',
+        boxShadow: `0px 4px 8px rgba(0,0,0, ${0.1 + 0.2 - (chroma(color).luminance() * 0.19)})`
+    }
+}
 
+// TODO: replace with inline styles
 const SwatchSymbolMask = styled.View`
   width: 100%;
   border-radius: 4px;
@@ -62,6 +75,7 @@ const SwatchSymbolMask = styled.View`
   background-color: ${props => props.color};
 `
 
+// TODO: replace with inline styles
 const DescriptionItemStyle = styled.View`
   width: 140px;
   display: flex;
@@ -76,27 +90,28 @@ const DescriptionItem = ({ label, value, themeID }) => (
 )
 
 // Render
-const ColorSwatch = ({ color, name, width, groupName, index, themeID }) => {
-    const _labels = labels(color, name, groupName)
-    const borderRadii = ['0px', '4px', '8px', '100%']
+const ColorSwatch = ({ color, name, width, groupName, index, themeID, shouldRenderOutline }) => {
+    const labels = getLabels(color, name, groupName)
 
     const SwatchSymbol = generateSymbol(() => <Swatch color={color}/>, ['color', groupName, name], themeID)
 
-    borderRadii.map(borderRadius => {
-        generateSymbol(() => <View
-            style={SwatchOutlineStyle(color, borderRadius)}
-            resizingConstraint={{ top: true, right: true, bottom: true, left: true, fixedHeight: false, fixedWidth: false }}
-            borderColor={color}
-            borderRadius={borderRadius}/>, ['color', groupName, name, 'outline', `border ${parseInt(borderRadius)}`], themeID)
-    })
+    if (shouldRenderOutline) {
+        BORDER_RADII.map(borderRadius => {
+            generateSymbol(() => <View
+                style={SwatchOutlineStyle(color, borderRadius)}
+                resizingConstraint={{ top: true, right: true, bottom: true, left: true, fixedHeight: false, fixedWidth: false }}
+                borderColor={color}
+                borderRadius={borderRadius}/>, ['color', groupName, name, 'outline', `border ${parseInt(borderRadius)}`], themeID)
+        })
+    }
 
     return (
         <Wrapper name={ 'Color ' + name } width={width} index={index}>
-            <SwatchSymbolMask name='swatchMask' color={color}>
+            <SwatchSymbolMask name='Swatch Mask' color={color}>
                 <SwatchSymbol />
             </SwatchSymbolMask>
             <View style={{ marginTop: '16px' }} name='swatchDescription'>
-                {Object.keys(_labels).map(name => <DescriptionItem themeID={themeID} value={_labels[name]} label={name} key={name} />)}
+                {Object.keys(labels).map(name => <DescriptionItem themeID={themeID} value={labels[name]} label={name} key={name} />)}
             </View>
         </Wrapper>
     )

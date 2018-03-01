@@ -1,6 +1,5 @@
 // Modules
 import React from 'react'
-import styled from 'styled-components/primitives'
 import { Artboard, View} from 'react-sketchapp'
 
 // Theme
@@ -8,7 +7,7 @@ import appTheme from '../../../theme/app'
 import uiTheme from '../../../theme/ui'
 
 import { _color as uiColor } from '../../../theme/ui/color'
-import { _color as appColor } from '../../../theme/app/color'
+import { color as appColor } from '../../../theme/app/color'
 
 // Components
 import Color from '../../Color'
@@ -26,7 +25,7 @@ const UITheme = ({ themeID = 'light', index }) => {
     return (
         <Artboard name={themeID} style={{position:'absolute', x: 0, marginLeft: `${index * 1200}px`}}>
             <View style={WrapperStyles(uiColor.background.standard[themeID])}>
-                <Color colors={appColor} themeID={themeID}/>
+                <Color colorGroups={appColor} themeID={themeID}/>
             </View>
         </Artboard>
     )

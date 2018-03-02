@@ -106,11 +106,11 @@ const ColorSwatch = ({ color, name, width, groupName, index, themeID, shouldRend
     }
 
     return (
-        <Wrapper name={ 'Color ' + name } width={width} index={index}>
-            <SwatchSymbolMask name='Swatch Mask' color={color}>
+        <Wrapper name={ 'swatch_' + name } width={width} index={index}>
+            <SwatchSymbolMask name='mask' color={color}>
                 <SwatchSymbol />
             </SwatchSymbolMask>
-            <View style={{ marginTop: '16px' }} name='swatchDescription'>
+            <View style={{ marginTop: '16px' }} name='description'>
                 {Object.keys(labels).map(name => <DescriptionItem themeID={themeID} value={labels[name]} label={name} key={name} />)}
             </View>
         </Wrapper>

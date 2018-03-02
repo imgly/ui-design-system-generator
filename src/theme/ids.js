@@ -16,3 +16,5 @@ export const BORDER_RADII = [
 export const BORDER_WIDTH = 1
 
 export const GLOBAL_WIDTH = 720
+
+export const TYPOGRAPHY_ALIGNMENTS = ['left', 'center', 'right']

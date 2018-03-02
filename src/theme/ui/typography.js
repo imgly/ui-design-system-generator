@@ -1,5 +1,6 @@
 import { css } from 'styled-components'
-import themeColors from './color'
+import uiColor from './color'
+import { LIGHT_THEME, DARK_THEME } from '../ids'
 
 export const fontFamily = "Acumin Pro SemiCondensed"
 
@@ -14,7 +15,7 @@ export const baseCSS = (
     align = 'left'
 ) => css`
   text-align: ${align};
-  color: ${themeColors.light.text.primary};
+  color: ${uiColor.text.primary[LIGHT_THEME]};
   font-family: ${fontFamily};
   font-size: 16px;
   line-height: 24px;
@@ -63,7 +64,7 @@ const generateCSS = (
           font-size: ${fontSize};
           font-family: ${fontFamily};
           line-height: ${lineHeight};
-          color: ${themeColors[themeID].text[color]};
+          color: ${uiColor.text[color][themeID]};
           margin-bottom: ${marginBottom};
         `
 }

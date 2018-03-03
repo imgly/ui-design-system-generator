@@ -102,12 +102,8 @@ const ShadowSwatch = ({ shadows, name, width, index, themeID }) => {
 
     BORDER_RADII.map(borderRadius => {
         generateSymbol(() =>
-            <View
-                style={{ width: 40, height: 40 }}
-                resizingConstraint={{top: true, right: true, bottom: true, left: true, fixedHeight: false, fixedWidth: false }} >
-                {shadows.map((shadow) =>
-                    <View style={SwatchSymbolStyle(borderRadius)}/>
-                )}
+            <View style={{ width: 40, height: 40 }} resizingConstraint={{top: true, right: true, bottom: true, left: true, fixedHeight: false, fixedWidth: false }} >
+                <View style={SwatchSymbolStyle(borderRadius)} shadowGroup={shadows}/>
             </View>
             , ['shadow', name, `border ${parseInt(borderRadius)}`], themeID)
     })

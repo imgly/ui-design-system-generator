@@ -87,12 +87,42 @@ const createSketchAppShadowStyles = (shadows = shadows) => {
         const pen = currentShadowStyles[1]
         const amb = currentShadowStyles[2]
 
+        const shadowStyle = ({xOffset, yOffset, spread, opacity, radius, shadowColor = 'black'}) => {
+            return {
+                shadowColor,
+                shadowOffset: { width: xOffset, height: yOffset },
+                shadowSpread: spread,
+                shadowOpacity: opacity,
+                shadowRadius: radius
+            }
+        }
+
         shadowStyles[k] = [
-            `${key[0]}px ${key[1]}px ${key[2]}px ${key[3]}px rgba(0, 0, 0, ${shadowKeyUmbraOpacity[ACTIVE_THEME]})`,
-            `${pen[0]}px ${pen[1]}px ${pen[2]}px ${pen[3]}px rgba(0, 0, 0, ${shadowKeyPenumbraOpacity[ACTIVE_THEME]})`,
-            `${amb[0]}px ${amb[1]}px ${amb[2]}px ${amb[3]}px rgba(0, 0, 0, ${shadowAmbientShadowOpacity[ACTIVE_THEME]})`,
+            shadowStyle({
+                xOffset: key[0],
+                yOffset: key[1],
+                radius: key[2],
+                spread: key[3],
+                opacity: shadowKeyUmbraOpacity[ACTIVE_THEME],
+            }),
+            shadowStyle({
+                xOffset: pen[0],
+                yOffset: pen[1],
+                radius: pen[2],
+                spread: pen[3],
+                opacity: shadowKeyPenumbraOpacity[ACTIVE_THEME],
+            }),
+            shadowStyle({
+                xOffset: amb[0],
+                yOffset: amb[1],
+                radius: amb[2],
+                spread: amb[3],
+                opacity: shadowAmbientShadowOpacity[ACTIVE_THEME],
+            })
         ]
     }
+
+    return shadowStyles
 }
 
-export default createShadowStyles(shadows)
+export default createSketchAppShadowStyles(shadows)

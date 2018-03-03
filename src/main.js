@@ -4,9 +4,10 @@ import React from 'react'
 import { render, Page, Document, TextStyles } from 'react-sketchapp'
 
 import UITheme from './components/UI/Theme'
-
 import { LIGHT_THEME, DARK_THEME } from './theme/ids'
-import { typeStyles } from './theme/app/typography'
+import appTheme from './theme/app'
+
+const shadow = appTheme.shadow
 
 const themes = [
     LIGHT_THEME,
@@ -22,10 +23,5 @@ const Doc = () => (
 )
 
 export default (context) => {
-    TextStyles.create({
-        context: context,
-        clearExistingStyles: true,
-    },  typeStyles);
-
     render(<Doc />);
 }

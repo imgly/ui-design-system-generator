@@ -7,6 +7,7 @@ import { color as appColor } from '../../../theme/app/color'
 
 // Components
 import Color from '../../Color'
+import Shadow from '../../Shadow'
 // import Typography from '../../Typography'
 
 const WrapperStyles = (backgroundColor) => {
@@ -22,6 +23,7 @@ const UITheme = ({ themeID = 'light', index }) => {
         <Artboard name={themeID} style={{position:'absolute', x: 0, marginLeft: `${index * 1200}px`}}>
             <View name={'theme_' + themeID} style={WrapperStyles(uiColor.background.standard[themeID])}>
                 <Color colorGroups={appColor} themeID={themeID}/>
+                <Shadow themeID={themeID}> </Shadow>
             </View>
         </Artboard>
     )

@@ -11,7 +11,7 @@ import { GLOBAL_WIDTH } from '../../theme/ids'
 import shadows from '../../theme/app/shadow'
 
 // Constants
-const SWATCH_PER_COLUMN = 3
+const SWATCH_PER_COLUMN = 4
 
 
 const ColorSwatchWrapperStyle = {

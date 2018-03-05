@@ -43,7 +43,12 @@ export default {
     background: {
         // Used to clearly separate two ui components or make edges appear harder.
         standard: {
-            [DARK_THEME]: chroma(UI_BASE_DARK).darken(1).hex(),
+            [DARK_THEME]: chroma(UI_BASE_DARK).hex(),
+            [LIGHT_THEME]: chroma(UI_BASE_LIGHT).brighten(1).hex(),
+        },
+
+        shadow: {
+            [DARK_THEME]: chroma(UI_BASE_DARK).hex(),
             [LIGHT_THEME]: chroma(UI_BASE_LIGHT).brighten(1).hex(),
         }
     }

@@ -45,12 +45,12 @@ const SwatchSymbol = styled.View`
   border-radius: ${props => props.borderRadius};
 `
 
-const SwatchSymbolStyle = (borderRadius) => {
+const SwatchSymbolStyle = (borderRadius, width = 40, height = 40, backgroundColor = 'rgba(0,0,0,0)') => {
     return {
-        width: 40,
-        backgroundColor: 'rgba(0,0,0,0)',
+        width: width,
+        height: height,
+        backgroundColor: backgroundColor,
         position: 'absolute',
-        height: 40,
         borderRadius: borderRadius,
     }
 }
@@ -105,12 +105,14 @@ const ShadowSwatch = ({ shadows, name, width, index, themeID }) => {
             <View style={{ width: 40, height: 40 }} resizingConstraint={{top: true, right: true, bottom: true, left: true, fixedHeight: false, fixedWidth: false }} >
                 <View style={SwatchSymbolStyle(borderRadius)} shadowGroup={shadows}/>
             </View>
-            , ['shadow', name, `border ${parseInt(borderRadius)}`], themeID)
+            , ['Shadow', `Border ${parseInt(borderRadius)}`, `Elevation ${parseInt(name)}`], themeID)
     })
 
     return (
         <Wrapper name={ 'swatch_' + name } width={width} index={index}>
-
+            <View style={{ width: '100%', height: 40, display: 'inline-block'}} >
+                <View style={SwatchSymbolStyle(4, '100%', 24, 'white')} shadowGroup={shadows}/>
+            </View>
         </Wrapper>
     )
 }

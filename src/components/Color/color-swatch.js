@@ -93,7 +93,7 @@ const DescriptionItem = ({ label, value, themeID }) => (
 const ColorSwatch = ({ color, name, width, groupName, index, themeID, shouldRenderOutline }) => {
     const labels = getLabels(color, name, groupName)
 
-    const SwatchSymbol = generateSymbol(() => <Swatch color={color}/>, ['color', groupName, name], themeID)
+    const SwatchSymbol = generateSymbol(() => <Swatch color={color}/>, ['Color', 'Fill', 'Border None', groupName, name], themeID)
 
     if (shouldRenderOutline) {
         BORDER_RADII.map(borderRadius => {
@@ -101,7 +101,7 @@ const ColorSwatch = ({ color, name, width, groupName, index, themeID, shouldRend
                 style={SwatchOutlineStyle(color, borderRadius)}
                 resizingConstraint={{ top: true, right: true, bottom: true, left: true, fixedHeight: false, fixedWidth: false }}
                 borderColor={color}
-                borderRadius={borderRadius}/>, ['color', groupName, name, 'outline', `border ${parseInt(borderRadius)}`], themeID)
+                borderRadius={borderRadius}/>, ['Color', 'Outline', `Border ${parseInt(borderRadius)}p`, groupName, name], themeID)
         })
     }
 

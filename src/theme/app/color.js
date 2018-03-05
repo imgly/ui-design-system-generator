@@ -36,18 +36,24 @@ export const color = {
             [LIGHT_THEME]: '#ff3d80',
             outline: true
         },
+
+        warning: {
+            [DARK_THEME]: '#ff594d',
+            [LIGHT_THEME]: '#ff594d',
+            outline: true
+        },
     },
 
     // These colors are used throughout the UI for backgrounds
-    background: {
+    interface: {
         // Used to clearly separate two ui components or make edges appear harder.
         separator: {
             [DARK_THEME]: chroma(UI_BASE_DARK).darken(1).hex(),
             [LIGHT_THEME]: chroma(UI_BASE_LIGHT).brighten(1).hex(),
         },
 
-        // The line under the text input.
-        textInput: {
+        // The line under the text input, border around buttons and other elements
+        border: {
             [DARK_THEME]: chroma(UI_BASE_DARK).brighten(0.4).hex(),
             [LIGHT_THEME]: chroma(UI_BASE_LIGHT).darken(0.4).hex(),
 
@@ -55,8 +61,8 @@ export const color = {
             outline: true
         },
 
-        /* Slider */
-        sliderKnob: {
+        // Slider
+        sliderHandle: {
             [DARK_THEME]: chroma(UI_BASE_DARK).brighten(4.5).hex(),
             [LIGHT_THEME]: chroma(UI_BASE_LIGHT).brighten(4.5).hex(),
         },
@@ -66,19 +72,19 @@ export const color = {
             [LIGHT_THEME]: chroma(UI_BASE_LIGHT).darken(1.5).hex(),
         },
 
-        /* NavigationBar */
-        navigationBar: {
+        // Navigation Bar
+        navigation: {
             [DARK_THEME]: chroma(UI_BASE_DARK).darken(0.4).hex(),
             [LIGHT_THEME]: chroma(UI_BASE_LIGHT).darken(0.4).hex(),
         },
 
-        /* ToolBar */
-        toolBar: {
+        // Tool Bar
+        tool: {
             [DARK_THEME]: UI_BASE_DARK,
             [LIGHT_THEME]: UI_BASE_LIGHT,
         },
 
-        /* Canvas */
+        // Canvas
         canvas: {
             [DARK_THEME]: UI_BASE_DARK,
             [LIGHT_THEME]: UI_BASE_LIGHT,

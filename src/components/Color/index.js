@@ -11,7 +11,7 @@ import UITypo from '../UI/Typo/index'
 import { GLOBAL_WIDTH } from '../../theme/ids'
 
 // Constants
-const SWATCH_PER_COLUMN = 3
+const SWATCH_PER_COLUMN = 4
 
 
 const ColorSwatchWrapperStyle = {

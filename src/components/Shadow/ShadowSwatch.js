@@ -11,11 +11,11 @@ import { BORDER_RADII, BORDER_WIDTH } from '../../theme/ids'
 // Imports
 import UITypo from '../UI/Typo'
 
-const getLabels = ( color, name) => {
+const getLabels = (shadow, name) => {
     return {
         name: `${name}`,
-        rgba: `${chroma(color).rgba()}`,
-        hex: `${chroma(color).hex()}`.toUpperCase(),
+        rgba: `${(shadow)}`,
+        hex: `${(shadow)}`
     }
 }
 
@@ -38,14 +38,20 @@ const Swatch = styled.View`
   background-color: ${props => props.color};
 `
 
-const SwatchOutlineStyle = (borderColor, borderRadius) => {
+const SwatchSymbol = styled.View`
+  height: 40px;
+  position: absolute;
+  width: 40px;
+  border-radius: ${props => props.borderRadius};
+`
+
+const SwatchSymbolStyle = (borderRadius, width = 40, height = 40, backgroundColor = 'rgba(0,0,0,0)') => {
     return {
-        width: 40,
-        height: 40,
-        borderWidth: BORDER_WIDTH,
-        borderStyle: 'solid',
-        borderColor: borderColor,
-        borderRadius: borderRadius
+        width: width,
+        height: height,
+        backgroundColor: backgroundColor,
+        position: 'absolute',
+        borderRadius: borderRadius,
     }
 }
 
@@ -90,31 +96,25 @@ const DescriptionItem = ({ label, value, themeID }) => (
 )
 
 // Render
-const ColorSwatch = ({ color, name, width, groupName, index, themeID, shouldRenderOutline }) => {
-    const labels = getLabels(color, name, groupName)
+const ShadowSwatch = ({ shadows, name, width, index, themeID }) => {
 
-    const SwatchSymbol = generateSymbol(() => <Swatch color={color}/>, ['Color', 'Fill', 'Border None', groupName, name], themeID)
+    // const SwatchSymbol = generateSymbol(() => <Swatch color={color}/>, ['color', groupName, name], themeID)
 
-    if (shouldRenderOutline) {
-        BORDER_RADII.map(borderRadius => {
-            generateSymbol(() => <View
-                style={SwatchOutlineStyle(color, borderRadius)}
-                resizingConstraint={{ top: true, right: true, bottom: true, left: true, fixedHeight: false, fixedWidth: false }}
-                borderColor={color}
-                borderRadius={borderRadius}/>, ['Color', 'Outline', `Border ${parseInt(borderRadius)}p`, groupName, name], themeID)
-        })
-    }
+    BORDER_RADII.map(borderRadius => {
+        generateSymbol(() =>
+            <View style={{ width: 40, height: 40 }} resizingConstraint={{top: true, right: true, bottom: true, left: true, fixedHeight: false, fixedWidth: false }} >
+                <View style={SwatchSymbolStyle(borderRadius)} shadowGroup={shadows}/>
+            </View>
+            , ['Shadow', `Border ${parseInt(borderRadius)}`, `Elevation ${parseInt(name)}`], themeID)
+    })
 
     return (
         <Wrapper name={ 'swatch_' + name } width={width} index={index}>
-            <SwatchSymbolMask name='mask' color={color}>
-                <SwatchSymbol />
-            </SwatchSymbolMask>
-            <View style={{ marginTop: '16px' }} name='description'>
-                {Object.keys(labels).map(name => <DescriptionItem themeID={themeID} value={labels[name]} label={name} key={name} />)}
+            <View style={{ width: '100%', height: 40, display: 'inline-block'}} >
+                <View style={SwatchSymbolStyle(4, '100%', 24, 'white')} shadowGroup={shadows}/>
             </View>
         </Wrapper>
     )
 }
 
-export default ColorSwatch
+export default ShadowSwatch

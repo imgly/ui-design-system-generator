@@ -16,7 +16,7 @@ const UITypo = ({
     `
 
     return (
-        <Component>{children}</Component>
+        <Component name={type}>{children}</Component>
     )
 }
 

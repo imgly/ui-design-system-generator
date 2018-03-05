@@ -1,5 +1,5 @@
 import { makeSymbol } from 'react-sketchapp'
-import { ACTIVE_THEME, THEME_NAME } from '../theme/app/ids'
+import { ACTIVE_THEME, THEME_NAME } from '../theme/ids'
 
 /**
  * Generate a Symbol and add it to the Symbols page.
@@ -16,15 +16,15 @@ export const generateSymbol = (
     themeID
 ) => {
     // TODO: Make editable
-    const withSpace = true
+    const withSpace = false
     const withCapitalize= true
     const withMultipleThemes = true
 
-    const pathSeparation = '/'
+    const pathSeparation = withSpace ? ' / ' : '/'
 
     // Add the theme name and theme ID at the start of the symbol name
     // e.g ProjectName/Dark/Color/Text/Primary
-    let pathArray = [THEME_NAME, themeID, ...path]
+    let pathArray = [themeID, ...path]
 
     // UpperCase the first letter in each path string
     if (withCapitalize) pathArray = pathArray.map(e => e.replace(/\b\w/g, firstLetter => firstLetter.toUpperCase()))

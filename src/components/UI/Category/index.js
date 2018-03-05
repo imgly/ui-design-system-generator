@@ -13,9 +13,9 @@ const Wrapper = styled.View`
 
 // Render
 const Category = ({ category, children, x, themeID }) => (
-    <Wrapper name={category}>
+    <Wrapper name={category.toLowerCase()}>
         <UITypo type='h2' themeID={themeID} name={'Title'}>{category}</UITypo>
-        <View name='Content'>
+        <View name='content'>
             {children}
         </View>
     </Wrapper>

@@ -1,7 +1,5 @@
 import { css } from 'styled-components'
 import themeColors from './color'
-import { makeSymbol, Text, TextStyles } from 'react-sketchapp'
-import { generateSymbol } from '../../util/index'
 import * as React from 'react'
 
 export const fontFamily = "Acumin Pro SemiCondensed"
@@ -71,22 +69,6 @@ const generateCSS = (
         `
 }
 
-
-export const typeStyles = {
-    Headline: {
-        fontSize: 36,
-        fontFamily: 'Roboto',
-        color: 'red',
-        lineHeight: 38,
-    },
-    Body: {
-        fontSize: 16,
-        fontFamily: 'Roboto',
-        lineHeight: 22,
-    },
-}
-
-makeSymbol(() => <Text style={TextStyles.get('Headline')}>Text</Text>, 'Texts/Light')
 
 const typography = {
 

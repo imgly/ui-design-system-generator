@@ -1,24 +1,21 @@
 // Modules
 import React from 'react'
-import styled from 'styled-components/primitives'
 import { View } from 'react-sketchapp'
 
 import UITypo from '../Typo/index'
 
-const Wrapper = styled.View`
-  left: ${props => props.x};
-  box-sizing: border-box;
-  padding: 120px 120px 0px;  
-`
+const WrapperStyles = {
+    paddingTop: 80
+}
 
 // Render
-const Category = ({ category, children, x, themeID }) => (
-    <Wrapper name={category.toLowerCase()}>
+const Category = ({ category, children, themeID }) => (
+    <View name={category.toLowerCase()} styles={WrapperStyles}>
         <UITypo type='h2' themeID={themeID} name={'Title'}>{category}</UITypo>
         <View name='content'>
             {children}
         </View>
-    </Wrapper>
+    </View>
 )
 
 export default Category

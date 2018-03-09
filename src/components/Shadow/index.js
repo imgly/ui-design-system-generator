@@ -9,6 +9,8 @@ import ShadowSwatch from './ShadowSwatch'
 
 import { GLOBAL_WIDTH } from '../../theme/ids'
 import shadows from '../../theme/app/shadow'
+import uiShadows from '../../theme/ui/shadow'
+
 
 // Constants
 const SWATCH_PER_COLUMN = 4
@@ -26,6 +28,8 @@ const ColorSwatchWrapperStyle = {
 // Render
 const Shadow = ({ themeID }) => {
     const shadowKeys = Object.keys(shadows)
+    const uiShadowKeys = Object.keys(shadows)
+
     return (
         <Category themeID={themeID} category={'Shadow'}>
             <View name={'contentWrapper'} style={{marginTop: '24px'}}>
@@ -37,6 +41,7 @@ const Shadow = ({ themeID }) => {
                             index={index}
                             width={GLOBAL_WIDTH/SWATCH_PER_COLUMN}
                             shadows={shadows[shadowKeys[index]]}
+                            uiShadows={uiShadows[uiShadowKeys[index]]}
                             themeID={themeID}
                         />)}
                 </View>

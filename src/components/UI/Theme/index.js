@@ -13,7 +13,10 @@ import Shadow from '../../Shadow'
 const WrapperStyles = (backgroundColor) => {
     return {
         backgroundColor,
-        paddingBottom: 120
+        paddingBottom: 120,
+        paddingLeft: 120,
+        paddingRight: 120,
+        paddingTop: 120
     }
 }
 

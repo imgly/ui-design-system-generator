@@ -1,7 +1,6 @@
 // Modules
 import React from 'react'
 import { View } from 'react-sketchapp'
-import styled from 'styled-components/primitives'
 
 // Imports
 import ColorSwatch from './color-swatch'

@@ -87,7 +87,7 @@ const ColorSwatch = ({ color, name, width, groupName, index, themeID, shouldRend
                 style={SwatchOutlineStyle(color, borderRadius)}
                 resizingConstraint={{ top: true, right: true, bottom: true, left: true, fixedHeight: false, fixedWidth: false }}
                 borderColor={color}
-                borderRadius={borderRadius}/>, ['Color', 'Outline', `Border ${parseInt(borderRadius)}p`, groupName, name], themeID)
+                borderRadius={borderRadius}/>, ['Color', 'Outline', `Radius ${parseInt(borderRadius)}p`, groupName, name], themeID)
         })
     }
 

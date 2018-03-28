@@ -37,7 +37,6 @@ export const color = {
         },
     },
 
-    // Accent Colors are used for active states and call to action buttons
     accent: {
         primary: {
             [DARK_THEME]: UI_PRIMARY_DARK,
@@ -54,6 +53,7 @@ export const color = {
 
     // These colors are used throughout the UI for backgrounds
     interface: {
+
         /**
          * States
          * Are used for background and borders for elements like:
@@ -61,11 +61,18 @@ export const color = {
          * - Cards
          * - Input Fields
          *
-         * When they use a border and background of the same type, the background alpha is
-         * set to:
+         * Try to use those colors first, before defining a new color.
+         *
+         * When they use a border and background of the same type, the background alpha is set to:
          * - Light: 0.4
          * - Dark: 0.6
          */
+        stateDisabled: {
+            [DARK_THEME]: getColorHue(chroma(UI_BASE_DARK).brighten(0.2)),
+            [LIGHT_THEME]: getColorHue(chroma(UI_BASE_LIGHT).darken(0.2)),
+            outline: true
+        },
+
         stateNormal: {
             [DARK_THEME]: getColorHue(chroma(UI_BASE_DARK).brighten(0.3)),
             [LIGHT_THEME]: getColorHue(chroma(UI_BASE_LIGHT).darken(0.4)),
@@ -78,9 +85,10 @@ export const color = {
             outline: true
         },
 
+        // Note the active state in most cases is the primary color
         stateActive: {
-            [DARK_THEME]: getColorHue(chroma(UI_BASE_DARK).brighten(0.9)),
-            [LIGHT_THEME]: getColorHue(chroma(UI_BASE_LIGHT).darken(1)),
+            [DARK_THEME]: UI_PRIMARY_DARK,
+            [LIGHT_THEME]: UI_PRIMARY_LIGHT,
             outline: true
         },
 

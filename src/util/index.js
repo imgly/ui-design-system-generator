@@ -16,7 +16,7 @@ export const generateSymbol = (
     themeID
 ) => {
     // TODO: Make editable
-    const withSpace = true
+    const withSpace = false
     const withCapitalize= true
     const withMultipleThemes = true
 

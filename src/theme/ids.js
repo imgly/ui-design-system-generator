@@ -7,9 +7,18 @@ export const THEME_NAME = 'PESDK'
 // Define the border radii that will be crated as color symbols
 // Important: only the colors that have outline set to true in ./color get outline symbols
 export const BORDER_RADII = [
-    4,
-    8,
-    100
+    {
+        name: 'M',
+        value: 4
+    },
+    {
+        name: 'L',
+        value: 8
+    },
+    {
+        name: 'Max',
+        value: 100
+    }
 ]
 
 export const BORDER_WIDTH = 1

@@ -12,7 +12,6 @@ export const Label = styled.Text`
   opacity: ${props => props.primary ? 1 : 0.6};
 `
 
-
 export const H3 = styled.Text`
   font-family: 'Roboto';
   font-size: 16px;

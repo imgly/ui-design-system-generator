@@ -79,15 +79,14 @@ const ColorSwatch = ({ color, name, width, groupName, index, themeID, shouldRend
     const SwatchSymbol = generateSymbol(() =>
         <View
             style={{ width: 40, height: 40, backgroundColor: color }}
-        />, ['Color', 'Fill', 'Border None', groupName, name], themeID)
+        />, ['Fill', groupName, name], themeID)
 
     if (shouldRenderOutline) {
         BORDER_RADII.map(borderRadius => {
             generateSymbol(() => <View
-                style={SwatchOutlineStyle(color, borderRadius)}
+                style={SwatchOutlineStyle(color, borderRadius.value)}
                 resizingConstraint={{ top: true, right: true, bottom: true, left: true, fixedHeight: false, fixedWidth: false }}
-                borderColor={color}
-                borderRadius={borderRadius}/>, ['Color', 'Outline', `Radius ${parseInt(borderRadius)}p`, groupName, name], themeID)
+                />, ['Outline', `Radius ${borderRadius.name}`, groupName, name], themeID)
         })
     }
 

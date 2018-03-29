@@ -65,7 +65,7 @@ export const color = {
          *
          * When they use a border and background of the same type, the background alpha is set to:
          * - Light: 0.4
-         * - Dark: 0.6
+         * - Dark: 0.2
          */
         stateDisabled: {
             [DARK_THEME]: getColorHue(chroma(UI_BASE_DARK).brighten(0.2)),
@@ -74,8 +74,8 @@ export const color = {
         },
 
         stateNormal: {
-            [DARK_THEME]: getColorHue(chroma(UI_BASE_DARK).brighten(0.3)),
-            [LIGHT_THEME]: getColorHue(chroma(UI_BASE_LIGHT).darken(0.4)),
+            [DARK_THEME]: getColorHue(chroma(UI_BASE_DARK).brighten(0.4)),
+            [LIGHT_THEME]: getColorHue(chroma(UI_BASE_LIGHT).darken(0.6)),
             outline: true
         },
 

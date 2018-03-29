@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image } from 'react-sketchapp'
+import { Image, View } from 'react-sketchapp'
 import { generateSymbol } from '../../util'
 
 const stylesPicture = {
@@ -10,10 +10,14 @@ const stylesPicture = {
 
 export const symbol = (images, themeID) => {
     images.map(image => {
-        generateSymbol(() => <Image
-            source={image.source}
-            style={{width: 60, height: 50 }}
-            resizingConstraint={{ top: true, right: true, bottom: true, left: true, fixedHeight: false, fixedWidth: false }}
-        />, ['Image', image.name], themeID)
+        generateSymbol(() =>
+            <View
+                name='image'
+                resizingConstraint={{ top: true, right: true, bottom: true, left: true, fixedHeight: false, fixedWidth: false }}>
+                <Image
+                    source={image.source}
+                    style={{width: 40, height: 40 }}/>
+            </View>
+        , ['Image', image.name], themeID)
     })
 }

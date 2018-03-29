@@ -1,12 +1,12 @@
 
 export const images = [
     {
-        name: 'Object Square',
-        source: 'https://pbs.twimg.com/profile_images/763033229993574400/6frGyDyA_400x400.jpg'
+        name: 'Square Object',
+        source: 'https://raw.githubusercontent.com/ludwigfrank/design-system-generator/master/src/assets/img/square_object.jpg'
     },
     {
-        name: 'Object Two',
-        source: '../../assets/img/square_object.jpg'
+        name: 'Vertical Default',
+        source: 'https://raw.githubusercontent.com/ludwigfrank/design-system-generator/master/src/assets/img/vertical_default.jpg'
     },
 ]
 

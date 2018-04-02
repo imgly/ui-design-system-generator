@@ -1,4 +1,3 @@
-
 export const images = [
     {
         name: 'Square Object',

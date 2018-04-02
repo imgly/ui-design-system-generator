@@ -5,7 +5,7 @@ import { View } from 'react-sketchapp'
 import { generateSymbol } from '../../util/index'
 
 // Constants
-import { BORDER_RADII, BORDER_WIDTH } from '../../theme/ids'
+import { BORDER_RADII, BORDER_WIDTH, STATE_FILL_OPACITY } from '../../theme/ids'
 
 // Imports
 import UITypo from '../UI/Typo'
@@ -73,14 +73,26 @@ const DescriptionItem = ({ label, value, themeID }) => (
 )
 
 // Render
-const ColorSwatch = ({ color, name, width, groupName, index, themeID, shouldRenderOutline }) => {
+const ColorSwatch = ({ color, name, width, groupName, index, themeID, shouldRenderOutline, shouldRenderStates }) => {
     const labels = getLabels(color, name, groupName)
+    let SwatchSymbol
 
-    const SwatchSymbol = generateSymbol(() =>
-        <View
-            style={{ width: 40, height: 40, backgroundColor: color }}
-        />, ['Fill', groupName, name], themeID)
+    // If the 'state' option is set, render the fill at a lower alpha than the corresponding outline
+    if (shouldRenderStates) {
+        SwatchSymbol = generateSymbol(() =>
+            <View
+                style={{ width: 40, height: 40, backgroundColor: chroma(color).alpha(STATE_FILL_OPACITY).css() }}
+            />, ['Fill', groupName, name], themeID)
 
+    // Else, render it at the default color
+    } else {
+        SwatchSymbol = generateSymbol(() =>
+            <View
+                style={{ width: 40, height: 40, backgroundColor: color }}
+            />, ['Fill', groupName, name], themeID)
+    }
+
+    // If the 'outline' option is set, create a symbol for each outline radius
     if (shouldRenderOutline) {
         BORDER_RADII.map(borderRadius => {
             generateSymbol(() => <View

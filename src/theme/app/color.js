@@ -49,7 +49,50 @@ export const color = {
             [LIGHT_THEME]: '#ff3d80',
             outline: true
         },
+
+        touchTarget: {
+            [DARK_THEME]: 'hsla(290, 87%, 47%, 0.5)',
+            [LIGHT_THEME]: 'hsla(290, 87%, 47%, 0.5)',
+        }
     },
+
+    state: {
+        disabled: {
+            [DARK_THEME]: getColorHue(chroma(UI_BASE_DARK).brighten(0.2)),
+            [LIGHT_THEME]: getColorHue(chroma(UI_BASE_LIGHT).darken(0.2)),
+            outline: true,
+            state: true
+        },
+
+        standard: {
+            [DARK_THEME]: getColorHue(chroma(UI_BASE_DARK).brighten(0.4)),
+            [LIGHT_THEME]: getColorHue(chroma(UI_BASE_LIGHT).darken(0.6)),
+            outline: true,
+            state: true
+        },
+
+        hover: {
+            [DARK_THEME]: getColorHue(chroma(UI_BASE_DARK).brighten(0.6)),
+            [LIGHT_THEME]: getColorHue(chroma(UI_BASE_LIGHT).darken(0.7)),
+            outline: true,
+            state: true
+        },
+
+        pressed: {
+            [DARK_THEME]: getColorHue(chroma(UI_BASE_DARK).brighten(0.8)),
+            [LIGHT_THEME]: getColorHue(chroma(UI_BASE_LIGHT).darken(0.9)),
+            outline: true,
+            state: true
+        },
+
+        // Note the active state in most cases is the primary color
+        active: {
+            [DARK_THEME]: UI_PRIMARY_DARK,
+            [LIGHT_THEME]: UI_PRIMARY_LIGHT,
+            outline: true
+        },
+    },
+
 
     // These colors are used throughout the UI for backgrounds
     interface: {

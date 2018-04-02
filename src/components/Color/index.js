@@ -38,6 +38,7 @@ const Color = ({ colorGroups, themeID }) => (
                                 name={color}
                                 index={index}
                                 shouldRenderOutline={!!colorGroups[colorGroup][color].outline}
+                                shouldRenderStates={!!colorGroups[colorGroup][color].state}
                                 key={color}
                                 width={GLOBAL_WIDTH/SWATCH_PER_COLUMN}
                             />)}

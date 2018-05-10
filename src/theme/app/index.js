@@ -1,5 +1,5 @@
 import color from './color'
-import typography from './typography'
+import typography from './typo'
 import spacing from './spacing'
 import shadow from './shadow'
 

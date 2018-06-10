@@ -1,5 +1,4 @@
 import { LIGHT_THEME, DARK_THEME, ACTIVE_THEME } from '../ids'
-const themes = [LIGHT_THEME, DARK_THEME]
 
 const shadowKeyUmbraOpacity = {
     [LIGHT_THEME]: 0.2,
@@ -49,26 +48,6 @@ const shadows = {
     ]
 }
 
-const createShadowStyles = (shadows = shadows) => {
-    const shadowStyles = {}
-
-    for (let k in shadows) {
-        const currentShadowStyles = shadows[k]
-        const key = currentShadowStyles[0]
-        const pen = currentShadowStyles[1]
-        const amb = currentShadowStyles[2]
-
-        shadowStyles[k] = [
-            `${key[0]}px ${key[1]}px ${key[2]}px ${key[3]}px rgba(0, 0, 0, ${shadowKeyUmbraOpacity[ACTIVE_THEME]})`,
-            `${pen[0]}px ${pen[1]}px ${pen[2]}px ${pen[3]}px rgba(0, 0, 0, ${shadowKeyPenumbraOpacity[ACTIVE_THEME]})`,
-            `${amb[0]}px ${amb[1]}px ${amb[2]}px ${amb[3]}px rgba(0, 0, 0, ${shadowAmbientShadowOpacity[ACTIVE_THEME]})`,
-        ]
-    }
-
-    return shadowStyles
-}
-
-
 const createSketchAppShadowStyles = (shadows = shadows) => {
     const shadowStyles = {}
 
@@ -111,6 +90,25 @@ const createSketchAppShadowStyles = (shadows = shadows) => {
                     opacity: shadowAmbientShadowOpacity[ACTIVE_THEME],
                 })
             ]
+    }
+
+    return shadowStyles
+}
+
+const createShadowStyles = (shadows = shadows) => {
+    const shadowStyles = {}
+
+    for (let k in shadows) {
+        const currentShadowStyles = shadows[k]
+        const key = currentShadowStyles[0]
+        const pen = currentShadowStyles[1]
+        const amb = currentShadowStyles[2]
+
+        shadowStyles[k] = [
+            `${key[0]}px ${key[1]}px ${key[2]}px ${key[3]}px rgba(0, 0, 0, ${shadowKeyUmbraOpacity[ACTIVE_THEME]})`,
+            `${pen[0]}px ${pen[1]}px ${pen[2]}px ${pen[3]}px rgba(0, 0, 0, ${shadowKeyPenumbraOpacity[ACTIVE_THEME]})`,
+            `${amb[0]}px ${amb[1]}px ${amb[2]}px ${amb[3]}px rgba(0, 0, 0, ${shadowAmbientShadowOpacity[ACTIVE_THEME]})`,
+        ]
     }
 
     return shadowStyles

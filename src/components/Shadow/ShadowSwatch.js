@@ -7,7 +7,7 @@ import { generateSymbol } from '../../util/index'
 import { BORDER_RADII, BORDER_WIDTH } from '../../theme/ids'
 
 // Imports
-import UITypo from '../UI/Typo'
+import UILabel from '../UI/UILabel'
 
 const getLabels = (name, uiShadows, themeID) => {
     const shadows = uiShadows[themeID]
@@ -50,13 +50,12 @@ const DescriptionItemStyle = () => {
         width: 140,
         display: 'flex',
         flexDirection: 'row',
-        marginBottom: 8
     }
 }
 
 const DescriptionItem = ({ label, value, themeID }) => (
     <View name={label} style={DescriptionItemStyle()}>
-        <UITypo type='caption' name='value' themeID={themeID} secondary={label !== 'name'}>{value.replace(/\b\w/g, l => l.toUpperCase()).replace(/,/g, ', ')}</UITypo>
+        <UILabel name='value' themeId={themeID} secondary={label !== 'name'}>{value.replace(/\b\w/g, l => l.toUpperCase()).replace(/,/g, ', ')}</UILabel>
     </View>
 )
 

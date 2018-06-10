@@ -19,8 +19,8 @@ export default {
         },
 
         hint: {
-            [DARK_THEME]: '#a9b0b4',
-            [LIGHT_THEME]: '#697279',
+            [DARK_THEME]: '#949a9e',
+            [LIGHT_THEME]: '#768087',
         },
     },
 
@@ -51,5 +51,13 @@ export default {
             [DARK_THEME]: chroma(UI_BASE_DARK).hex(),
             [LIGHT_THEME]: chroma(UI_BASE_LIGHT).brighten(1).hex(),
         }
+    },
+
+    interface: {
+        // Used to clearly separate two ui components or make edges appear harder.
+        separator: {
+            [DARK_THEME]: chroma(UI_BASE_DARK).brighten(0.5).hex(),
+            [LIGHT_THEME]: chroma(UI_BASE_LIGHT).darken(0.4).hex(),
+        },
     }
 }

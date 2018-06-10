@@ -1,53 +1,110 @@
+import { TYPOGRAPHY_ALIGNMENTS } from '../ids'
 import { color } from './color'
-import { ACTIVE_THEME } from '../ids'
+const textColor = color.text
+
+const fontFamily = {
+    primary: 'IBMPlexSansCond-Medium'
+}
 
 const baseStyles = {
-    fontSize: '14px',
-    lineHeight: '24px',
-    fontFamily: 'Fira Sans',
-    color: 'primary',
+    fontSize: 14,
+    lineHeight: 24,
+    fontFamily: fontFamily.primary,
+    fontWeight: '400',
+    color: textColor.primary,
     marginBottom: '0px',
 }
 
-const typography = {
-    'h1': {
+export const typographyStyles = {
+    'Headline 1': {
         style: {
-            fontSize: '32px',
-            lineHeight: '32px',
-            color: 'primary'
+            fontSize: 32,
+            lineHeight: 32,
+            color: textColor.primary
         }
     },
 
-    'h2': {
+    'Headline 2': {
         style: {
-            fontSize: '24px',
-            lineHeight: '28px',
-            color: 'primary'
+            fontSize: 24,
+            lineHeight: 28,
+            color: textColor.primary
+        }
+    },
+    
+    'Label': {
+        style: {
+            color: color.text.hint,
+            fontSize: 13,
+            lineHeight: 16
         }
     },
 
-    'button': {
+    'Body': {
         style: {
-            fontSize: 12.5,
-            letterSpacing: 1.92,
-            lineHeight: 12,
-            color: 'primary'
+            fontSize: 14,
+            lineHeight: 18,
+            color: textColor.secondary
+        }
+    },
+
+    'Button Text': {
+        style: {
+            letterSpacing: 1.5,
+            lineHeight: 16,
+            fontSize: 12,
+            fontFamily: "IBM Plex Sans Condensed Medium",
+            textTransform: 'uppercase',
+            color: textColor.secondary,
+            width: 108
+        },
+        styleVariations: {
+            'Disabled': {
+                opacity: 0.5
+            },
+            'White': {
+                color: textColor.white
+            },
+            'OnImage': {
+                color: textColor.white,
+                shadowColor: '#000000',
+                shadowOffset: { width: 0, height: 1 },
+                shadowSpread: 3,
+                shadowOpacity: 0.5,
+                shadowRadius: 4
+            }
         }
     },
 }
 
-// Todo: allow multiple variations as object
-const textAlign = ['left', 'center', 'right']
-
-const mergedStyles = Object.keys(typography).reduce((acc, cur, ind, arr) => {
-    textAlign.map((alignment, index) => {
-        const c = typography[cur].style.color
-        acc[cur + '/' + alignment] = {
+const mergedStyles = (themeId) => Object.keys(typographyStyles).reduce((acc, cur, ind, arr) => {
+    TYPOGRAPHY_ALIGNMENTS.map((alignment, index) => {
+        const defaultStyle = {
             ...baseStyles,
-            ...typography[cur].style,
-            color: color.text[c][ACTIVE_THEME],
-            textAlign: alignment
+            ...typographyStyles[cur].style,
+            color: typographyStyles[cur].style.color[themeId],
+            textAlign: alignment,
         }
+
+        // if the style contains variations
+        if (typographyStyles[cur].styleVariations) {
+            Object.keys(typographyStyles[cur].styleVariations).forEach(variation => {
+                const variationStyles = typographyStyles[cur].styleVariations[variation]
+
+                acc[alignment + '/' + cur + '/' + variation] = {
+                    ...defaultStyle,
+                    ...variationStyles,
+                    color: variationStyles.color
+                        ? variationStyles.color[themeId]
+                        : defaultStyle.color,
+                }
+            })
+        }
+
+        acc[alignment + '/' + cur + '/Standard' ] = {
+            ...defaultStyle
+        }
+
     })
 
     return acc

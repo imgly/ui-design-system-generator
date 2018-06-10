@@ -1,14 +1,36 @@
-import { View } from 'react-sketchapp'
+// Modules
 import React from 'react'
-import types from './types'
-import TypographyItem from './typography-item'
-import Category from '../UI/Category/index'
+import { View, Text } from 'react-sketchapp'
 
-const Typography = ({ themeID = 'light'}) => {
+import TypographyItem from './TypographyItem'
+import Category from '../UI/Category/index'
+import { generateSymbol } from "../../util";
+import { ACTIVE_THEME } from "../../theme/ids";
+
+const Typography = ({ themeID = 'light', typographyStyles }) => {
+    const typographyStylesArray = Object.keys(typographyStyles)
     return (
         <Category themeID={themeID} category={'Typography'}>
-            <View>
-                ${types.map((type, index) => <TypographyItem key={index} type={type} themeID={themeID}/> )}
+            <View name={'contentWrapper'} style={{marginBottom: '32px'}}>
+                ${typographyStylesArray.map((type, index) => {
+                    if (themeID === ACTIVE_THEME) {
+                        generateSymbol(() => <Text style={typographyStyles[type]}>{type.split('/')[1]}</Text>,
+                            ['Typography', type],
+                            themeID
+                        )
+                    }
+
+                    // only render the variations that are left aligned
+                    if (!type.includes('left')) { return }
+                    return (
+                        <TypographyItem
+                            name={type}
+                            styles={typographyStyles[type]}
+                            themeID={themeID}
+                            key={index}
+                        /> )}
+                    )
+                }
             </View>
         </Category>
     )

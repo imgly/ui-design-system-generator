@@ -4,7 +4,6 @@ import { View } from 'react-sketchapp'
 
 // Imports
 import Category from '../UI/Category'
-import UITypo from '../UI/Typo/index'
 import ShadowSwatch from './ShadowSwatch'
 
 import { GLOBAL_WIDTH } from '../../theme/ids'

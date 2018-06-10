@@ -2,7 +2,7 @@ import { css } from 'styled-components'
 import uiColor from './color'
 import { LIGHT_THEME, DARK_THEME } from '../ids'
 
-export const fontFamily = "Acumin Pro SemiCondensed"
+export const fontFamily = 'IBM Plex Sans Condensed'
 
 /**
  * Generate the base css for each typography styles.
@@ -54,7 +54,7 @@ const generateCSS = (
     {
         fontSize = '14px',
         lineHeight = '24px',
-        fontFamily = 'Roboto',
+        fontFamily = 'IBM Plex Sans Condensed',
         color = 'primary',
         marginBottom = '0px',
         themeID

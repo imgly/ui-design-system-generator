@@ -17,5 +17,5 @@ npm run render
 ```
 
 ## Todos
-[] Add Documentation to README
-[] Create sketch plugin with visual interface
+- [ ] Add Documentation to README
+- [ ] Create sketch plugin with visual interface

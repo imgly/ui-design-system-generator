@@ -1,20 +1,20 @@
 {
-  "name": "styled-components-example",
-  "version": "1.0.0",
-  "description": "",
+  "name": "ui-design-system-generator",
+  "version": "0.0.1",
+  "description": "Design & Develop System. Kickstart your project with supported theming and automatic naming.",
+  "author": "Team PhotoEditorSDK <contact@photoeditorsdk.com>",
+  "private": false,
+  "license": "MIT",
   "skpm": {
-    "main": "styled-components.sketchplugin",
+    "main": "design-system.sketchplugin",
     "manifest": "src/manifest.json"
   },
   "scripts": {
     "build": "skpm-build",
     "watch": "skpm-build --watch",
     "render": "skpm-build --watch --run",
-    "render:once": "skpm-build --run",
-    "postinstall": "npm run build && skpm-link"
+    "render:once": "skpm-build --run"
   },
-  "author": "Mathieu Dutour <mathieu@dutour.me>",
-  "license": "MIT",
   "devDependencies": {
     "@skpm/builder": "^0.2.0"
   },

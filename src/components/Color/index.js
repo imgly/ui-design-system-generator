@@ -27,7 +27,7 @@ const Color = ({ colorGroups, themeID }) => (
     <Category themeID={themeID} category={'Color'}>
         <View name={'contentWrapper'} style={{marginTop: '24px'}}>
             {Object.keys(colorGroups).map(colorGroup =>
-                <View name={'swatchGroup_' + colorGroup}>
+                <View key={colorGroup} name={'swatchGroup_' + colorGroup}>
                     <UITypo type='h3' themeID={themeID}>{colorGroup.replace(/\b\w/g, l => l.toUpperCase())}</UITypo>
                     <View style={ColorSwatchWrapperStyle} name='swatches' key={colorGroup}>
                         {Object.keys(colorGroups[colorGroup]).map((color, index) =>
